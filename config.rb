@@ -56,8 +56,6 @@ set :images_dir, 'images'
 set :markdown_engine, :redcarpet
 set :markdown, tables: true, gh_blockcode: true, fenced_code_blocks: true, smartypants: true
 
-page '/index.html', layout: 'blank'
-
 # Build-specific configuration
 configure :build do
   # For example, change the Compass output style for deployment
