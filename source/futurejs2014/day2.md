@@ -1,5 +1,8 @@
-FutureJS
-========
+---
+title: 'FutureJS 2014 Notes. Day 2'
+---
+
+![](/images/futurejs_logo.svg)
 
 _May 3rd, 2014, Barcelona, Spain_
 
