@@ -54,7 +54,7 @@ set :js_dir, 'javascripts'
 set :images_dir, 'images'
 
 set :markdown_engine, :redcarpet
-set :markdown, tables: true, gh_blockcode: true, fenced_code_blocks: true, smartypants: true
+set :markdown, tables: true, gh_blockcode: true, fenced_code_blocks: true, smartypants: true, strikethrough: true
 
 # Build-specific configuration
 configure :build do
