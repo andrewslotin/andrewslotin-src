@@ -7,3 +7,4 @@ title: 'microxchg 2015 notes'
 Here are some notes I took to get back later:
 
 * [Day 1](day1.html)
+* [Day 2](day2.html)
