@@ -1,8 +1,11 @@
 ---
-title: 'microxchg 2015 notes'
+title: 'microXchg 2015 notes'
 ---
 
-[microxchg 2015](http://microxchg.io/) The Microservices Conference took place in Berlin on February 12-13th, 2015.
+![microXchg 2015](/images/microxchg_logo.png)
+=============================================
+
+[microXchg](http://microxchg.io/) is a microservices Conference took place in Berlin on February 12-13th, 2015.
 
 Here are some notes I took to get back later:
 

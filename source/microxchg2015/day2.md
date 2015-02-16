@@ -1,9 +1,9 @@
 ---
-title: 'microxchg 2015 Notes. Day 2'
+title: 'microXchg 2015 Notes. Day 2'
 ---
 
-microxchg 2015: The Microservices Conference in Berlin
-======================================================
+[![microXchg 2015](http://microxchg.io/microxchg_logo.png)](/microxchg2015)
+=================================================================================
 _Berlin, Feb 12-13th, 2015_
 
 <a name="1"></a>
