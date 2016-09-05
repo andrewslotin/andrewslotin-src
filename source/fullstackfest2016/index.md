@@ -54,6 +54,8 @@ Shopify in Multiple Datacenters
 -------------------------------
 _[Simon Eskildsen](https://twitter.com/sirupsen)_
 
+[Slides](https://speakerdeck.com/sirupsen/full-stack-fest-2016-shopify-in-multiple-datacenters)
+
 The Flash Sale Problem -- 3-4x req/s peaks.
 
 ### Single Tenant vs Multi Tenant solutions
