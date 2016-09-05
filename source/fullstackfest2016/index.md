@@ -10,6 +10,7 @@ _September 5, 2016, Barcelona, Spain_
 1. [Computing: the First 100 Years](#computing-the-first-100-years)
 2. [Shopify in Multiple Datacenters](#shopify-in-multilple-datacenters)
 3. [Architectural Patterns of Resilient Distributed Systems](#architectural-patterns-of-resilient-distributed-systems)
+4. [Unikernels and why they're useful (or not)](#unikernels-and-why-they-are-useful-or-not)
 
 <a name="computing-the-first-100-years"></a>
 Computing: the First 100 Years
@@ -123,3 +124,155 @@ A: Deploying all at once works for now, but would like to make them independent 
 
 Q: Kubernetes?
 A: No.
+
+<a name="architectural-patterns-of-resilient-distributed-systems"></a>
+Architectural Patterns of Resilient Distributed Systems
+-------------------------------------------------------
+_[Ines Sombra](https://twitter.com/randommood)_
+
+[Slides](http://www.slideshare.net/InesSombra/architectural-patterns-of-resilient-distributed-systems) same talk but from 2015.
+[GitHub repo](https://github.com/Randommood/FullStackFest2016) of the talk.
+
+**Resilience** is the ability of a sustem to adapt or keep working when challenges occur.
+
+### How can we construct more resilient systems?
+
+* Yield -- how much information I can get back from my system.
+
+  Focus on yield rather than uptime.
+  
+* Harvest -- fraction of the complete result.
+
+  > harvest = data available / total data
+
+#### Probabilistic Availability
+
+* Graceful harvest degradation
+* Randomness to make the worst-case & average-case the same
+* Replication of high-priority data for greater harvest control
+* ...
+
+#### Decomposition & Orthogonality
+
+Decompose into subsystems intolerant to harvest degradation
+Only provide strong consistency when required
+
+> If your system favors yield or harvest is an outcome of its design.
+
+#### Cook's model
+
+* Mentoring
+* Responding
+* Adapting
+* Learning
+
+System safety is about what can happen, where the operating point is and what's the error margin.
+
+#### Engineering system resilience
+
+* Continuous maintenance
+* Reveal control to opeators
+* Know it's going to be used in the ways you never intend
+
+#### Borrill's Model
+
+> Failre areas need != strategies
+
+* Classical engineering
+* Reactive operations
+* Unknown-unknown
+
+### Resilience in industry
+
+* Chubby lock by Google
+  - centralized services are hard to contruct
+  - engineers don't understand distributed systems
+* ChaosMonkey by Netflix
+* Fastly
+  - [Powderhorn](https://www.fastly.com/blog/building-fast-and-reliable-purging-system) by fastly
+  - ImageOpto
+    + Design error types & graceful handling of them
+    + Failure detection & system operability are ongoing concerns
+    + Mixed-mode & versioning of data structures
+    + Validation & system adaptability
+
+### Wrapping up
+
+* Redundancies are the key
+* Gossip/epidemic protocols
+* Capacity planning matters
+
+> Optimizations can make your systems less resilient!
+
+Operations matter
+
+* We're always guessing
+* Complex ops leads to less resilient system
+* You design operability too
+
+Not all complexity is bad
+
+* Increases safety
+* Adding resilience may come at the cost of other desired goals (perfomance, simplicity, etc)
+
+Leverage engineering best practice
+
+* Test!
+* Version from the begininng!
+* Mixed-mode ops need to be common (upgrades & evolvability are still tricky)
+
+<a name="unikernels-and-why-they-are-useful-or-not"></a>
+Unikernels and Why They're Useful (or not)
+------------------------------------------
+_[Amir Chaudhry](https://twitter.com/amirmc)_
+
+Code you **care** about / code the OS **insists** you need = 1/9.
+
+* Disentangle apps from ths OS
+* Break up OS libs into modular components
+* Link only system functionality
+* Target alternative platforms
+
+> // Unikernels wiki quote
+
+Two approaches
+
+1. Consider legacy
+   - ...
+2. Clean slate approach (from the ground)
+   - Mirage OS
+   - IncludeOS
+
+##### MirageOS
+
+* Written in OCaml
+* Everything is a library
+* Swapping system libraries allows to target different platforms
+
+Familiar development cycle, while being flexible with the choice of target platform.
+
+### Unikernels recap
+
+* Highly specialized
+* Continuum with containers
+* Robust deployments
+* Everything is a library!
+
+### When should you use unikernels?
+
+Microservices:
+
+* Single service
+* Distributed system
+* Independent deployment
+* Diversity of test choices
+
+### Pathway
+
+1. Detect boundary lines in your monolith
+2. Break it up into microservices
+3. Turn each into a unikernel
+
+### Are they production ready?
+
+Yes, but be ready to get your hands dirty.
