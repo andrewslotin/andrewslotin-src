@@ -11,6 +11,8 @@ _September 5, 2016, Barcelona, Spain_
 2. [Shopify in Multiple Datacenters](#shopify-in-multilple-datacenters)
 3. [Architectural Patterns of Resilient Distributed Systems](#architectural-patterns-of-resilient-distributed-systems)
 4. [Unikernels and why they're useful (or not)](#unikernels-and-why-they-are-useful-or-not)
+5. [What did AlphaGo do to beat the strongest human Go player?](#what-did-alphago-do-to-beat-the-strongest-human-go-player)
+6. [How secure are Docker containers?](#how-secure-are-docker-containers)
 
 <a name="computing-the-first-100-years"></a>
 Computing: the First 100 Years
@@ -276,3 +278,70 @@ Microservices:
 ### Are they production ready?
 
 Yes, but be ready to get your hands dirty.
+
+<a name="#what-did-alphago-do-to-beat-the-strongest-human-go-player"></a>
+What did AlphaGo do to beat the strongest human Go player?
+----------------------------------------------------------
+_[Tobias Pfeiffer]()_
+
+Machine learning and Go 101 (I missed a large part of it to be honest).
+
+<a name="how-secure-are-docker-containers"></a>
+How secure are Docker containers?
+---------------------------------
+_[Ben Hall](https://twitter.com/Ben_Hall)_
+
+What happens when you give anonymous unrestricted access to a hosted Docker daemon?
+
+Dockerfile:
+```
+RUN adduser <new user>
+USER <new user>
+```
+
+Run container:
+```
+$ docker run -u <new user>
+```
+
+Also this gives an access to host's network, as well as D-Bus, and thus insecure:
+```
+$ docker run -it --net=host ubuntu bash
+```
+
+## Limit a container to a share of the resource
+```
+--cpu-shares
+--cpuset-cpus
+--memory-resetvation
+--kernel-memory
+...
+```
+
+### Elevation of privileges
+
+An existing `setuid(0) && setgid(0)` exploit:
+```
+$ docker run --uid=$(id -u) --security-opt=no-new-priveleges
+```
+
+### Read-only containers
+
+```
+$ docker run --read-only \                          # Make container FS read-only
+             --security-opt="no-new-priveleges \    # Disallow elevation of priveleges
+             --security-opt="apparmor:es-profile" \ # Use elasticsearch security profile
+             -v /data:/data
+             elasticsearch
+```
+
+So Is Docker Secure? Yes, it is but only as secure as your practices.
+
+[A security benchmark and analyzer for Docker](http://DockerBench.com)
+
+### How secure are containers?
+
+* Docker has strong defaults
+* Nothing is really secure
+* Potential exploits via Linux Kernel
+* Run DockerBench.com
