@@ -84,6 +84,8 @@ Microservice Pipeline Architecture
 ----------------------------------
 _[Tim Perry](https://twitter.com/pimterry)_
 
+[Slides](https://speakerdeck.com/pimterry/microservice-pipeline-architecture)
+
 ### Sync vs. async:
 
 Sync:
