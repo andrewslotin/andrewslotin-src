@@ -286,6 +286,8 @@ What did AlphaGo do to beat the strongest human Go player?
 ----------------------------------------------------------
 _[Tobias Pfeiffer]()_
 
+[Slides](https://speakerdeck.com/pragtob/what-did-alphago-do-to-beat-the-strongest-human-go-player-1)
+
 Machine learning and Go 101 (I missed a large part of it to be honest).
 
 <a name="how-secure-are-docker-containers"></a>
