@@ -10,3 +10,4 @@ Fullstack Fest 2016
 Here are some notes I took to get back later:
 
 * [Day 1](day1.html)
+* [Day 2](day2.html)
